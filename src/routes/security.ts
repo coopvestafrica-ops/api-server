@@ -128,4 +128,4 @@ router.post("/security/ip-block", async (req, res): Promise<void> => {
   res.json({ settings: settingsToCamel(await loadSettingsRow()), message: action === "unblock" ? "IP unblocked" : "IP blocked" });
 });
 
-export default router;
+module.exports = router;

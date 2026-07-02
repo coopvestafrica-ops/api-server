@@ -103,4 +103,4 @@ router.post("/compliance/:id/reject", requireRole("operator", "admin", "super_ad
   res.json({ id: updated.id, status: "rejected", reviewedAt: new Date().toISOString() });
 });
 
-export default router;
+module.exports = router;

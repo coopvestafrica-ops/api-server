@@ -111,4 +111,4 @@ router.put("/mobile-content/text/:key", async (req, res) => {
   res.json({ section: contentSections[i], message: "Content updated successfully" });
 });
 
-export default router;
+module.exports = router;

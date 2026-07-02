@@ -6,7 +6,7 @@ import { requireAuth, requireRole } from "../middleware/auth";
 const router: IRouter = Router();
 router.use(requireAuth);
 
-// Auto-sync Supabase Auth users → profiles so mobile registrations appear in admin
+// Auto-sync Supabase Auth users -> profiles so mobile registrations appear in admin
 async function syncAuthUsersToProfiles(): Promise<void> {
   try {
     const { data, error } = await (supabase.auth.admin as any).listUsers({ perPage: 1000 });
@@ -38,7 +38,7 @@ async function syncAuthUsersToProfiles(): Promise<void> {
       await supabase.from("profiles").insert(toInsert);
     }
   } catch {
-    // best-effort — never crash the route
+    // best-effort -- never crash the route
   }
 }
 

@@ -218,4 +218,4 @@ router.delete("/excel-uploads/:id", requireAuth, async (req, res): Promise<void>
   res.json({ success: true, message: "Upload record deleted" });
 });
 
-export default router;
+module.exports = router;

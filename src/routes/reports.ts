@@ -252,4 +252,4 @@ async function generateReportData(reportType: string, filters: any) {
   return data || [];
 }
 
-export default router;
+module.exports = router;

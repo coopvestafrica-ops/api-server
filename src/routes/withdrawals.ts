@@ -139,4 +139,4 @@ router.put("/withdrawals/daily-limit", async (req, res): Promise<void> => {
   res.json({ message: "Daily limit updated", dailyLimit: limit });
 });
 
-export default router;
+module.exports = router;

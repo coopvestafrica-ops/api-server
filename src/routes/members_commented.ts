@@ -7,40 +7,40 @@ const router: IRouter = Router();
 router.use(requireAuth);
 
 // Auto-sync Supabase Auth users → profiles so mobile registrations appear in admin
-async function syncAuthUsersToProfiles(): Promise<void> {
-  try {
-    const { data, error } = await (supabase.auth.admin as any).listUsers({ perPage: 1000 });
-    if (error || !data?.users?.length) return;
-
-    const { data: existing } = await supabase.from("profiles").select("email");
-    const knownEmails = new Set(
-      (existing ?? []).map((p: any) => ((p.email as string) ?? "").toLowerCase())
-    );
-
-    const toInsert = (data.users as any[])
-      .filter(u => u.email && !knownEmails.has(u.email.toLowerCase()))
-      .map(u => ({
-        id: crypto.randomUUID(),
-        user_id: "CVA-" + u.id.replace(/-/g, "").slice(0, 8).toUpperCase(),
-        name:
-          u.user_metadata?.full_name ??
-          u.user_metadata?.name ??
-          u.email.split("@")[0],
-        email: u.email,
-        phone: (u.phone ?? u.user_metadata?.phone) || null,
-        role: "member",
-        is_active: true,
-        kyc_verified: false,
-        created_at: u.created_at ?? new Date().toISOString(),
-      }));
-
-    if (toInsert.length > 0) {
-      await supabase.from("profiles").insert(toInsert);
-    }
-  } catch {
-    // best-effort — never crash the route
-  }
-}
+/* async function syncAuthUsersToProfiles(): Promise<void> {
+//   try {
+//     const { data, error } = await (supabase.auth.admin as any).listUsers({ perPage: 1000 });
+//     if (error || !data?.users?.length) return;
+// 
+//     const { data: existing } = await supabase.from("profiles").select("email");
+//     const knownEmails = new Set(
+//       (existing ?? []).map((p: any) => ((p.email as string) ?? "").toLowerCase())
+//     );
+// 
+//     const toInsert = (data.users as any[])
+//       .filter(u => u.email && !knownEmails.has(u.email.toLowerCase()))
+//       .map(u => ({
+//         id: crypto.randomUUID(),
+//         user_id: "CVA-" + u.id.replace(/-/g, "").slice(0, 8).toUpperCase(),
+//         name:
+//           u.user_metadata?.full_name ??
+//           u.user_metadata?.name ??
+//           u.email.split("@")[0],
+//         email: u.email,
+//         phone: (u.phone ?? u.user_metadata?.phone) || null,
+//         role: "member",
+//         is_active: true,
+//         kyc_verified: false,
+//         created_at: u.created_at ?? new Date().toISOString(),
+//       }));
+// 
+//     if (toInsert.length > 0) {
+//       await supabase.from("profiles").insert(toInsert);
+//     }
+//   } catch {
+//     // best-effort — never crash the route
+//   }
+*/}
 
 router.get("/members/stats", async (req, res): Promise<void> => {
   await syncAuthUsersToProfiles();

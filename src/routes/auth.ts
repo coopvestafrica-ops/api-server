@@ -105,4 +105,4 @@ router.post("/api/auth/verify-otp", async (req: Request, res: Response) => {
   }
 });
 
-export default router;
+module.exports = router;

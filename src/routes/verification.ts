@@ -135,4 +135,4 @@ router.post("/verification/:id/:action", async (req, res): Promise<void> => {
   res.json({ message: `KYC ${action.replace("_", " ")} applied` });
 });
 
-export default router;
+module.exports = router;

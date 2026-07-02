@@ -118,4 +118,4 @@ router.post("/guarantors/requests/:id/:action", async (req, res): Promise<void> 
   res.json({ message: `Request ${action}d`, request: data });
 });
 
-export default router;
+module.exports = router;

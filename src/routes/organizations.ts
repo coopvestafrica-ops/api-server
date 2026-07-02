@@ -98,4 +98,4 @@ router.get("/organizations/:id/staff", async (req, res): Promise<void> => {
   res.json({ staff, organizationId: req.params.id });
 });
 
-export default router;
+module.exports = router;

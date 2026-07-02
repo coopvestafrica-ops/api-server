@@ -90,4 +90,4 @@ router.use(loginHistoryRouter);
 router.use(excelUploadsRouter);
 router.use(depositsRouter);
 
-export default router;
+module.exports = router;

@@ -100,4 +100,4 @@ router.patch("/payroll/batches/:id/status", async (req, res): Promise<void> => {
   res.json(data);
 });
 
-export default router;
+module.exports = router;

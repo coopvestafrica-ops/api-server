@@ -215,4 +215,4 @@ router.post("/contributions", requireRole("operator", "admin", "super_admin"), a
   });
 });
 
-export default router;
+module.exports = router;

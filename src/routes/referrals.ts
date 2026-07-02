@@ -84,4 +84,4 @@ router.put("/referrals/settings", async (req, res): Promise<void> => {
   res.json({ settings: await loadSettings(), message: "Referral settings updated" });
 });
 
-export default router;
+module.exports = router;

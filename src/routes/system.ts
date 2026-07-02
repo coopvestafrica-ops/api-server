@@ -235,4 +235,4 @@ router.get("/system/settings", requireRole("admin", "super_admin"), async (req, 
   });
 });
 
-export default router;
+module.exports = router;

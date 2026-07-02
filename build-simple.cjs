@@ -1,25 +1,23 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { build as esbuild } from "esbuild";
-import { rm, readdirSync, statSync } from "node:fs/promises";
-import { readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+const path = require("path");
+const { build } = require("esbuild");
+const fs = require("fs");
 
-const artifactDir = path.dirname(fileURLToPath(import.meta.url));
+const artifactDir = __dirname;
 
 // Preprocess: Convert all exports to module.exports in TypeScript files
 function preprocess(dir) {
-  const files = readdirSync(dir);
+  const files = fs.readdirSync(dir);
   for (const file of files) {
-    const fullPath = join(dir, file);
-    if (statSync(fullPath).isDirectory()) {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+    if (stat.isDirectory()) {
       preprocess(fullPath);
     } else if (file.endsWith('.ts')) {
-      let content = readFileSync(fullPath, 'utf8');
+      let content = fs.readFileSync(fullPath, 'utf8');
       // Replace all "export default router;" with "module.exports = router;"
       if (content.includes('export default router;')) {
         const updated = content.replace(/export default router;/g, 'module.exports = router;');
-        writeFileSync(fullPath, updated);
+        fs.writeFileSync(fullPath, updated);
         console.log('Converted:', fullPath);
       }
     }
@@ -32,9 +30,9 @@ async function buildAll() {
   preprocess(path.join(artifactDir, 'src'));
   
   const distDir = path.resolve(artifactDir, "dist");
-  await rm(distDir, { recursive: true, force: true });
+  fs.rmSync(distDir, { recursive: true, force: true });
 
-  await esbuild({
+  await build({
     entryPoints: [path.resolve(artifactDir, "src/index.ts")],
     platform: "node",
     bundle: true,

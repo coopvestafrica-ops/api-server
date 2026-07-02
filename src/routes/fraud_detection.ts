@@ -120,4 +120,4 @@ router.put("/fraud-detection/:id/action", async (req, res): Promise<void> => {
   res.json({ flag: toCamel(data as AlertRow), message: `Action '${action}' applied successfully` });
 });
 
-export default router;
+module.exports = router;
