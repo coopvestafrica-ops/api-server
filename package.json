@@ -29,12 +29,14 @@
     "@types/express": "^5.0.6",
     "@types/node": "^22.15.0",
     "@types/supertest": "^6.0.2",
+    "@vercel/node": "^5.8.22",
     "cross-env": "^7.0.3",
     "esbuild": "^0.25.8",
     "pino-pretty": "^13",
     "supertest": "^7.0.0",
     "thread-stream": "3.1.0",
     "tsx": "^4.19.2",
+    "typescript": "^6.0.3",
     "vitest": "^2.1.9"
   }
 }
