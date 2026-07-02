@@ -149,4 +149,4 @@ router.post("/api/password-reset/reset", async (req: Request, res: Response) => 
   }
 });
 
-module.exports = router;
+export default router;

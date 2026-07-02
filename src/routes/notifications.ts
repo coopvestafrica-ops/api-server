@@ -210,4 +210,4 @@ router.post("/notifications/:id/read", async (req, res): Promise<void> => {
   });
 });
 
-module.exports = router;
+export default router;

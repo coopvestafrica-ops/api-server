@@ -155,4 +155,4 @@ router.post("/sessions/:sessionId/heartbeat", async (req, res): Promise<void> =>
   res.json({ success: true });
 });
 
-module.exports = router;
+export default router;

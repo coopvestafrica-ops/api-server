@@ -300,4 +300,4 @@ router.patch("/deposits/:id/cancel", requireRole("operator", "admin", "super_adm
   });
 });
 
-module.exports = router;
+export default router;

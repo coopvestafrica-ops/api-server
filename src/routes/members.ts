@@ -594,4 +594,4 @@ router.delete("/members/:id", requireAuth, requireRole("super_admin"), async (re
   }
 });
 
-module.exports = router;
+export default router;

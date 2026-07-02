@@ -254,4 +254,4 @@ router.delete("/roles/:id", requireRole("super_admin"), async (req, res): Promis
   res.json({ message: "Admin access revoked" });
 });
 
-module.exports = router;
+export default router;

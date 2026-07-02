@@ -287,4 +287,4 @@ router.post("/support-tickets/:id/close", requireRole("operator"), async (req, r
   res.json({ id: ticket.id, status: ticket.status });
 });
 
-module.exports = router;
+export default router;

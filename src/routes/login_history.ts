@@ -329,4 +329,4 @@ router.get("/login-history/stats", requireRole("admin", "super_admin"), async (r
   });
 });
 
-module.exports = router;
+export default router;

@@ -288,4 +288,4 @@ function deriveStatus(row: any): string {
   return "active";
 }
 
-module.exports = router;
+export default router;

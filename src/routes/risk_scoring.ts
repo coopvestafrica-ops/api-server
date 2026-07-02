@@ -56,4 +56,4 @@ router.get("/risk-scoring", async (req, res): Promise<void> => {
   });
 });
 
-module.exports = router;
+export default router;

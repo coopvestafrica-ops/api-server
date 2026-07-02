@@ -183,4 +183,4 @@ router.post("/investments", async (req, res): Promise<void> => {
   });
 });
 
-module.exports = router;
+export default router;

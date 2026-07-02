@@ -246,4 +246,4 @@ router.get("/reconciliation/discrepancies", requireRole("admin", "super_admin"),
   });
 });
 
-module.exports = router;
+export default router;

@@ -891,4 +891,4 @@ router.post("/guarantor/requests/:id/decline", async (req, res): Promise<void> =
   }
 });
 
-module.exports = router;
+export default router;

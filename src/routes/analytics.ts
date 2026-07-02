@@ -166,4 +166,4 @@ router.get("/analytics/kpis", requireRole("viewer", "operator", "admin", "super_
   });
 });
 
-module.exports = router;
+export default router;

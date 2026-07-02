@@ -160,4 +160,4 @@ router.post("/wallets/:id/adjust", async (req, res): Promise<void> => {
   res.json({ wallet: updated, message: "Balance adjusted successfully" });
 });
 
-module.exports = router;
+export default router;

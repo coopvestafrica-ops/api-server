@@ -89,4 +89,4 @@ router.post("/setup/super-admin", async (req, res): Promise<void> => {
   }
 });
 
-module.exports = router;
+export default router;

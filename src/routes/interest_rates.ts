@@ -141,4 +141,4 @@ router.put("/interest-rates/:id", async (req, res): Promise<void> => {
   res.json(rates[idx]);
 });
 
-module.exports = router;
+export default router;

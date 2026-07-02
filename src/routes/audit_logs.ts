@@ -37,4 +37,4 @@ router.get("/audit-logs", async (req, res): Promise<void> => {
   });
 });
 
-module.exports = router;
+export default router;

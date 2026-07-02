@@ -224,4 +224,4 @@ router.get("/dashboard/recent-activity", async (req, res): Promise<void> => {
   res.json(activities.slice(0, 10));
 });
 
-module.exports = router;
+export default router;
