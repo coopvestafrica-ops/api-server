@@ -1,7 +1,7 @@
 import { Router, type IRouter } from "express";
 import { supabase, splitName, deriveStatus } from "../lib/supabase";
 import { CreateMemberBody } from "../lib/types";
-import { requireAuth, requireRole } from "../middleware/auth";
+import { requireAuth, requireRole, type AuthenticatedRequest } from "../middleware/auth";
 
 const router: IRouter = Router();
 router.use(requireAuth);
